@@ -3,12 +3,11 @@ variable "common_tags" {}
 variable "registry_server" {
   default = "https://index.docker.io/v1/"
 }
-variable "registry_username" {
+variable "docker_username" {
   default = "khawarhere"
 }
-variable "registry_password" {
-  default = "khawar256"
+variable "docker_password" {
 }
-variable "registry_email" {
+variable "docker_email" {
   default = "khawarhere@gmail.com"
 }

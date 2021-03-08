@@ -25,11 +25,11 @@ resource "kubernetes_secret" "docker-registry" {
 data "template_file" "docker_config_script" {
   template = file("${path.module}/config.json")
   vars = {
-    docker-username           = var.registry_username
-    docker-password           = var.registry_password
+    docker-username           = var.docker_username
+    docker-password           = var.docker_password
     docker-server             = var.registry_server
-    docker-email              = var.registry_email
-    auth                      = base64encode("${var.registry_username}:${var.registry_password}")
+    docker-email              = var.docker_email
+    auth                      = base64encode("${var.docker_username}:${var.docker_password}")
   }
 }
 
