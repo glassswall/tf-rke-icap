@@ -12,8 +12,8 @@ variable "common_tags" {
   }
 }
 
-variable "region" {
-}
-
-variable "profile" {
-}
+//variable "region" {
+//}
+//
+//variable "profile" {
+//}
