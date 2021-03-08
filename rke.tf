@@ -9,10 +9,11 @@ terraform {
 
 module "nodes" {
   source = "./aws"
-  region = var.region
-  profile = var.profile
   instance_type = "t2.large"
   cluster_id    = "rke"
+  region  = var.region
+  aws_access_key_id = var.aws_access_key_id
+  aws_secret_access_key = var.aws_secret_access_key
   common_tags = var.common_tags
 }
 
@@ -51,33 +52,3 @@ resource "rke_cluster" "cluster" {
     role    = ["worker"]
   }
 }
-
-//
-//resource "local_file" "kube_cluster_yaml" {
-//  filename = "./kube_config_cluster.yml"
-//  content  = rke_cluster.cluster.kube_config_yaml
-//}
-//
-//module "icap" {
-//  source = "./icap"
-//  depends_on = [rke_cluster.cluster]
-//  common_tags = var.common_tags
-//}
-//========================
-//provider "helm" {
-//  kubernetes {
-//    config_path = "./kube_config_cluster.yml"
-//  }
-//}
-//
-//resource "helm_release" "adaptation" {
-//  name       = "adaptation"
-//  chart      = "./icap/adaptation"
-//  depends_on = [rke_cluster.cluster]
-//}
-//
-//resource "helm_release" "rabbitmq" {
-//  name       = "rabbitmq"
-//  chart      = "./icap/rabbitmq"
-//  depends_on = [rke_cluster.cluster]
-//}
