@@ -52,22 +52,18 @@ resource "rke_cluster" "cluster" {
   }
 }
 
+//
 //resource "local_file" "kube_cluster_yaml" {
-//  filename = "~/.kube/config"
+//  filename = "./kube_config_cluster.yml"
 //  content  = rke_cluster.cluster.kube_config_yaml
 //}
-
-resource "local_file" "kube_cluster_yaml" {
-  filename = "./kube_config_cluster.yml"
-  content  = rke_cluster.cluster.kube_config_yaml
-}
-
-module "icap" {
-  source = "./icap"
-  depends_on = [rke_cluster.cluster]
-  common_tags = var.common_tags
-}
-
+//
+//module "icap" {
+//  source = "./icap"
+//  depends_on = [rke_cluster.cluster]
+//  common_tags = var.common_tags
+//}
+//========================
 //provider "helm" {
 //  kubernetes {
 //    config_path = "./kube_config_cluster.yml"
