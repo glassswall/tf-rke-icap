@@ -1,7 +1,4 @@
 locals {
-//  cluster_id_tag = {
-//    "kubernetes.io/cluster/${var.cluster_id}" = "owned"
-//  }
   cluster_id_tag = merge(
     var.common_tags,
     {
@@ -48,11 +45,11 @@ resource "aws_instance" "rke-node" {
   key_name               = aws_key_pair.rke-node-key.id
   iam_instance_profile   = aws_iam_instance_profile.rke-aws.name
   vpc_security_group_ids = [aws_security_group.allow-all.id]
-//  tags                   = local.cluster_id_tag
   tags                   = merge(
     var.common_tags,
     {
-      "Name" = "rke-node-${count.index}"
+      "Name" = "rke-node-${count.index}",
+      "Role" = aws_iam_role.rke-role.name,
     },
   )
 
