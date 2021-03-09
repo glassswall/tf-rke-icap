@@ -15,11 +15,3 @@ variable "common_tags" {
 variable "region" {
   default     = "$(var.region)"
 }
-
-//variable "aws_access_key_id" {
-//  default     = "$(var.aws_access_key_id)"
-//}
-//
-//variable "aws_secret_access_key" {
-//  default     = "$(var.aws_secret_access_key)"
-//}
