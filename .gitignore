@@ -1,7 +1,7 @@
 # Local .terraform directories
 **/.terraform/*
-*.yml
-kube_config_cluster.yml
+#*.yml
+#kube_config_cluster.yml
 .idea
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template

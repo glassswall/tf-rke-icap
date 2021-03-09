@@ -49,7 +49,6 @@ resource "aws_instance" "rke-node" {
     var.common_tags,
     {
       "Name" = "rke-node-${count.index}",
-      "Role" = aws_iam_role.rke-role.name,
     },
   )
 

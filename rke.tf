@@ -12,8 +12,6 @@ module "nodes" {
   instance_type = "t2.large"
   cluster_id    = "rke"
   region  = var.region
-  aws_access_key_id = var.aws_access_key_id
-  aws_secret_access_key = var.aws_secret_access_key
   common_tags = var.common_tags
 }
 
@@ -51,4 +49,9 @@ resource "rke_cluster" "cluster" {
     ssh_key = module.nodes.private_key
     role    = ["worker"]
   }
+}
+
+resource "local_file" "kube_cluster_yaml" {
+  filename = "./kube_config_cluster.yml"
+  content  = rke_cluster.cluster.kube_config_yaml
 }
